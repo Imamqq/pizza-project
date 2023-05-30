@@ -16,6 +16,18 @@ function PizzaBlock({ name, price, imageUrl, sizes, types, id }) {
 
     const addedCount = cartItem ? cartItem.count : 0
 
+    if (typesPizzas[activeTypeIndex] === 'Tрадиционное') {
+        price += 50
+    }
+
+    if (sizes[activeSizeIndex] === 30) {
+        price += 50
+    } else if ((sizes[activeSizeIndex] === 40)) {
+        price += 100
+    }
+
+
+
     const onClickAdd = () => {
         const item = {
             id,
@@ -23,7 +35,7 @@ function PizzaBlock({ name, price, imageUrl, sizes, types, id }) {
             price,
             imageUrl,
             types: typesPizzas[activeTypeIndex],
-            size: activeSizeIndex
+            size: sizes[activeSizeIndex]
         }
         dispatch(addItem(item))
     }
